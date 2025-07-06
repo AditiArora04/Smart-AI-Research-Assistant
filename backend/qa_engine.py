@@ -10,7 +10,7 @@ def create_qa_chain_with_memory(text):
     splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     texts = splitter.split_text(text)
 
-    embeddings = OpenAIEmbeddings(openai_api_key="your-real-openai-api-key")
+    embeddings = OpenAIEmbeddings()
     db = FAISS.from_texts(texts, embedding=embeddings)
 
     retriever = db.as_retriever()
